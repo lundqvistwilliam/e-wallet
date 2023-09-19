@@ -1,11 +1,18 @@
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import CardForm from "../components/CardForm";
+import CardPreview from "../components/CardPreview";
+import AddCards from "./AddCards"; 
 
-export const Cards = ({cards}) => {
+
+export const Cards = ({cards,setCards}) => {
     console.log('Rendered Cards component');
     console.log('Received cards:', cards);
 
     return (
         <div>
           <h2>Your Cards</h2>
+          <p><Link to="/addcards">Add card</Link></p>
           <div className="container">
           {cards.map((card, index) => (
           <div className={`card${card.vendor === "Visa" ? " visa" : ""}${card.vendor === "Swedbank" ? " swedbank" : ""}${card.vendor === "MasterCard" ? " mastercard" : ""}${card.vendor === "American Express" ? " amex" : ""}`}>

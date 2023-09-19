@@ -1,29 +1,38 @@
-import { useState } from "react"
-import { useNavigate } from "react-router-dom";
-import CardForm  from "../components/CardForm";
+import React, { useState } from "react";
+import  CardForm  from "../components/CardForm";
+import  CardPreview  from "../components/CardPreview";
 
+export const AddCards = ({cards,setCards}) => {
+  const [formData, setFormData] = useState({
+    bankNumber: "",
+    cardHolder: "",
+    expirationMonth: "",
+    expirationYear: "",
+    ccv: "",
+    vendor: "",
+  });
 
-export const AddCards = ({setCards: updateCards }) => {
-    const [cards, setCards] = useState([]);
-    
-    const handleSubmit = (formData) => {
-        const newCard = { ...formData };
-        setCards((prevCards) => [...prevCards, newCard]);
-        updateCards((prevCards) => [...prevCards, newCard]);
-        console.log('New card added:', newCard);
-        console.log('Updated cards state:', cards);
-        };
-    
-    console.log('Rendered AddCards component'); 
-    console.log('Current cards state:', cards);
+  const handleSubmit = () => {
+    const newCard = { ...formData };
+    setCards((prevCards) => [...prevCards, newCard]);
+    setFormData({
+        bankNumber: "",
+        cardHolder: "",
+        expirationMonth: "",
+        expirationYear: "",
+        ccv: "",
+        vendor: "",
+      });
+  };
 
-    return (
-        <div>
-          <CardForm onSubmit={handleSubmit} />
-        </div>
-      );
-    }
-
-    
-
-
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+  return (
+    <div>
+      <CardPreview formData={formData} />
+      <CardForm formData={formData} setFormData={setFormData} onSubmit={handleSubmit} onChange={handleChange} />
+    </div>
+  );
+};
