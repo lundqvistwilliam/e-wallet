@@ -1,3 +1,5 @@
+
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -11,3 +13,143 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-image: linear-gradient(
+    109.6deg,
+    rgba(62, 161, 219, 1) 11.2%,
+    rgba(93, 52, 236, 1) 100.2%
+  );
+  color: #fff; 
+  padding: 10px 20px; 
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+ul li {
+  margin-left: 30px; 
+  font-size: larger;
+}
+
+ul li a {
+  color: #fff; 
+  text-decoration: none;
+}
+
+h2 {
+  text-align: center;
+}
+
+form {
+  text-align: center;
+}
+
+form button {
+  width: 10%;
+  height: 30px;
+  padding: 5px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size:medium;
+}
+
+form button:hover {
+  background-color: #45a049;
+}
+
+input[type=text],input[type=number], select {
+  width: 30%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+#expirationMonth, #expirationYear {
+  width: 15%;
+}
+
+.container {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  width: 30%;
+  height: 20%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  
+}
+
+.visa {
+  background-image: linear-gradient(100deg,
+  rgba(26, 31, 113) 50%,
+  rgba(247, 182, 0) 100%);
+}
+
+.mastercard {
+  background-image: linear-gradient(100deg,
+  rgba(235, 0, 27) 80%,
+  rgba(247, 158, 27) 100.2%);
+}
+
+.swedbank {
+  background: rgba(238,112,35);
+}
+
+.amex {
+  background: rgba(108, 196, 238);
+}
+
+.card {
+  width: 380px;
+  height: 230px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  z-index: 1;
+  overflow: hidden;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  position: relative;
+}
+
+.vendor_text {
+  float: right;
+  padding: 10px;
+}
+
+
+.card_bankNumber {
+  padding: 10px;
+}
+.card_bankNumber img {
+  width: 60px;
+  height: 45px;
+}
+
+.card_bankNumber p {
+  font-size: 22px;
+  padding: 10px 0;
+  letter-spacing: 2px;
+  color: #ffffff;
+}
+
+.card_info {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+  color: #ffffff;
+}
+
