@@ -1,9 +1,4 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
-import CardForm from "../components/CardForm";
-import CardPreview from "../components/CardPreview";
-import AddCards from "./AddCards"; 
-
 
 export const Cards = ({cards,setCards}) => {
     console.log('Rendered Cards component');
@@ -15,7 +10,7 @@ export const Cards = ({cards,setCards}) => {
           <p><Link to="/addcards">Add card</Link></p>
           <div className="container">
           {cards.map((card, index) => (
-          <div className={`card${card.vendor === "Visa" ? " visa" : ""}${card.vendor === "Swedbank" ? " swedbank" : ""}${card.vendor === "MasterCard" ? " mastercard" : ""}${card.vendor === "American Express" ? " amex" : ""}`}>
+          <div key={index} className={`card${card.vendor === "Visa" ? " visa" : ""}${card.vendor === "Swedbank" ? " swedbank" : ""}${card.vendor === "MasterCard" ? " mastercard" : ""}${card.vendor === "American Express" ? " amex" : ""}`}>
           <div className="card">
                 <div className="vendor_text">
                   {/* Add logo image? */}

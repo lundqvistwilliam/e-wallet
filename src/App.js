@@ -5,13 +5,14 @@ import {
   Route,
   RouterProvider
 } from "react-router-dom";
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import {Root} from "./pages/Root"
 import {Home} from "./pages/Home"
 import {Cards} from "./pages/Cards"
 import {AddCards} from "./pages/AddCards"
 
 function App() {
+  
   const [cards, setCards] = useState([
     {
       bankNumber: '1234-5678-9012-3456',

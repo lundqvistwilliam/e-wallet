@@ -1,20 +1,37 @@
-import React, { useState } from 'react';
-import {Link} from 'react-router-dom'
-import { useNavigate } from "react-router-dom";
+import { useState,useEffect } from 'react';
+import {Link,useNavigate} from 'react-router-dom'
 
  const CardForm = ({ onSubmit, formData, setFormData}) => {
-   const navigate = useNavigate();
+    const [randomUserName, setRandomUserName] = useState("");
+    const navigate = useNavigate();
+
    const handleChange = (e) => {
      const { name, value } = e.target;
      console.log(`Updating ${name} to ${value}`);
      setFormData({ ...formData, [name]: value });
  }
+
    const handleSubmit = (e) => {
      e.preventDefault();
      onSubmit(formData);
      navigate("/cards");
      console.log('Form submitted:', formData);
    }
+
+   const fetchRandomUser = async () => {
+    const response = await fetch("https://randomuser.me/api/");
+    const userData = await response.json();
+    const { first, last } = userData.results[0].name;
+    const randomUserFullName = `${first} ${last}`;
+    setRandomUserName(randomUserFullName);
+    setFormData({ ...formData, cardHolder: randomUserFullName });
+  };
+
+  useEffect(() => {
+    fetchRandomUser();
+  }, []);
+
+
    return (
      <div>
        <h2>Add a Card</h2>
@@ -88,7 +105,7 @@ import { useNavigate } from "react-router-dom";
             onChange={handleChange}
             required
             >
-                  <option value="" disabled selected>Year</option>
+                  <option value="" disabled>Year</option>
                   <option>2023</option>
                   <option>2024</option>
                   <option>2025</option>
@@ -114,6 +131,7 @@ import { useNavigate } from "react-router-dom";
           <button type="submit"><strong>Submit</strong>
        </button>
        <Link to="/cards"></Link></form>
+       <button onClick={fetchRandomUser}>Random User</button>
      </div>
    );
  };
