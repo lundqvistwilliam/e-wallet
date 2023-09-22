@@ -33,18 +33,31 @@ function App() {
 
   useEffect(() => {
     if (randomUserFullName) {
-      setCards([
-        {
-          bankNumber: '1234-5678-9012-3456',
-          cardHolder: randomUserFullName,
-          expirationMonth: '12',
-          expirationYear: '2023',
-          ccv: '123',
-          vendor: 'Visa',
-        },
-      ]);
+      const generateRandomNumber = (min, max) => {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      };
+  
+      const generateRandomCardNumber = () => {
+        const cardNumber = [];
+        for (let i = 0; i < 16; i++) {
+          cardNumber.push(generateRandomNumber(0, 9));
+        }
+        return cardNumber.join('');
+      };
+  
+      const randomCard = {
+        bankNumber: generateRandomCardNumber(),
+        cardHolder: randomUserFullName,
+        expirationMonth: generateRandomNumber(1, 12).toString().padStart(2, '0'),
+        expirationYear: generateRandomNumber(2023, 2030).toString(),
+        ccv: generateRandomNumber(100, 999).toString(),
+        vendor: ['Visa', 'Swedbank', 'MasterCard', 'American Express'][generateRandomNumber(0, 3)],
+      };
+  
+      setCards([randomCard]);
     }
   }, [randomUserFullName]);
+  
   
   const router = createBrowserRouter(
     createRoutesFromElements(
