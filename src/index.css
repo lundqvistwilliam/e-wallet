@@ -7,6 +7,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #fff8e6;
 }
 
 code {
@@ -133,6 +134,7 @@ input[type=text],input[type=number], select {
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   position: relative;
+  margin-bottom: 10px;
 }
 
 .card-preview {
@@ -175,6 +177,13 @@ input[type=text],input[type=number], select {
   justify-content: space-between;
   padding: 0 10px;
   color:white;
+}
+
+.cardDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 @media screen and (max-width:600px) {

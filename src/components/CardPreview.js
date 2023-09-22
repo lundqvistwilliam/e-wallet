@@ -1,6 +1,6 @@
 import { useState,useEffect } from "react";
 
-const CardPreview = ({ formData }) => {
+const CardPreview = ({ formData,cardHolder }) => {
   const [cardClassName, setCardClassName] = useState("card");
 
   useEffect(() => {
@@ -18,7 +18,7 @@ const CardPreview = ({ formData }) => {
   }, [formData]);
 
   return (
-    <div>
+    <div className="cardDiv">
       <h2>Card Preview</h2>
       <div className="container">
         <div className={cardClassName}>
@@ -31,7 +31,7 @@ const CardPreview = ({ formData }) => {
             <p>{formData.bankNumber}</p>
           </div>
           <div className="card_info preview">
-            <p>{formData.cardHolder}</p>
+            <p>{cardHolder}</p>
             <p>CCV {formData.ccv}</p>
             <p>
               {formData.expirationMonth} / {formData.expirationYear}

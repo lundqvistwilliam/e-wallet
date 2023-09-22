@@ -1,41 +1,44 @@
 import { useState,useEffect } from 'react';
 import {Link,useNavigate} from 'react-router-dom'
 
- const CardForm = ({ onSubmit, formData, setFormData}) => {
+ const CardForm = ({ onSubmit, formData, setFormData,randomUserFullName }) => {
     const [randomUserName, setRandomUserName] = useState("");
     const navigate = useNavigate();
+    const [isFormValid, setIsFormValid] = useState(true);
+
+    useEffect(() => {
+        setFormData((prevData) => ({
+          ...prevData,
+          cardHolder: randomUserFullName, 
+        }));
+      }, [randomUserFullName]);
 
    const handleChange = (e) => {
      const { name, value } = e.target;
-     console.log(`Updating ${name} to ${value}`);
+    //  console.log(`Updating ${name} to ${value}`);
      setFormData({ ...formData, [name]: value });
  }
 
    const handleSubmit = (e) => {
      e.preventDefault();
+     if (formData.bankNumber.length !== 16) {
+        setIsFormValid(false);
+        return;
+     }
+     setIsFormValid(true);
+     setFormData({ ...formData, cardHolder: randomUserFullName });
      onSubmit(formData);
      navigate("/cards");
-     console.log('Form submitted:', formData);
+    //  console.log('Form submitted:', formData);
    }
-
-   const fetchRandomUser = async () => {
-    const response = await fetch("https://randomuser.me/api/");
-    const userData = await response.json();
-    const { first, last } = userData.results[0].name;
-    const randomUserFullName = `${first} ${last}`;
-    setRandomUserName(randomUserFullName);
-    setFormData({ ...formData, cardHolder: randomUserFullName });
-  };
-
-  useEffect(() => {
-    fetchRandomUser();
-  }, []);
+  
+  
 
 
    return (
      <div>
        <h2>Add a Card</h2>
-       <form onSubmit={handleSubmit}>
+       <form name="addCardForm" onSubmit={handleSubmit}>
        <div>
             <label htmlFor="vendor">Vendor:</label><br/>
             <select id="vendor" 
@@ -57,6 +60,7 @@ import {Link,useNavigate} from 'react-router-dom'
               type="number"
               id="bankNumber"
               name="bankNumber"
+              title="Input has to be 16 characters long"
               value={formData.bankNumber}
               onChange={handleChange}
               placeholder="XXXX-XXXX-XXXX-XXXX"
@@ -72,6 +76,7 @@ import {Link,useNavigate} from 'react-router-dom'
               name="cardHolder"
               value={formData.cardHolder}
               onChange={handleChange}
+              disabled={formData.cardHolder !== ""}
               required
             />
           </div>
@@ -131,7 +136,7 @@ import {Link,useNavigate} from 'react-router-dom'
           <button type="submit"><strong>Submit</strong>
        </button>
        <Link to="/cards"></Link></form>
-       <button onClick={fetchRandomUser}>Random User</button>
+       {/* <button onClick={fetchRandomUser}>Random User</button> */}
      </div>
    );
  };

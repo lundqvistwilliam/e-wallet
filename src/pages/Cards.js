@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 
 export const Cards = ({cards,setCards}) => {
-    console.log('Rendered Cards component');
-    console.log('Received cards:', cards);
+    // console.log('Rendered Cards component');
+    // console.log('Received cards:', cards);
 
     return (
-        <div>
+        <div className="cardDiv">
           <h2>Your Cards</h2>
           <p><Link to="/addcards">Add card</Link></p>
           <div className="container">
