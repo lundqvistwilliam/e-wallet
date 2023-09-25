@@ -96,7 +96,30 @@ input[type=text],input[type=number], select {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  
+}
+
+.card {
+  width: 380px;
+  height: 230px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  z-index: 1;
+  overflow: hidden;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  position: relative;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.card:hover{
+  opacity: 80%;
+  cursor: pointer;
+  border: 2px solid black;
+}
+
+.active {
+  border:2px solid gold;
 }
 
 .visa {
@@ -123,20 +146,7 @@ input[type=text],input[type=number], select {
   background: rgb(46, 40, 40);
   color:white;
 }
-
-.card {
-  width: 380px;
-  height: 230px;
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  border-radius: 10px;
-  z-index: 1;
-  overflow: hidden;
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  position: relative;
-  margin-bottom: 10px;
-}
-
+ 
 .card-preview {
   width: 380px;
   height: 230px;

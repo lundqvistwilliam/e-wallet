@@ -30,8 +30,8 @@ export const AddCards = ({cards,setCards,randomUserFullName}) => {
     setFormData({ ...formData, [name]: value });
   };
 
-  console.log('formData state:', formData);
-    console.log('randomUserFullName prop:', randomUserFullName);
+//   console.log('formData state:', formData);
+//     console.log('randomUserFullName prop:', randomUserFullName);
 
   return (
     <div>

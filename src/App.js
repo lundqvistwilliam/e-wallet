@@ -23,7 +23,7 @@ function App() {
         const response = await fetch('https://randomuser.me/api/');
         const userData = await response.json();
         const { first, last } = userData.results[0].name;
-        const fullName = `${first} ${last}`;
+        const fullName = `${first} ${last}`.toUpperCase();
         setRandomUserFullName(fullName);
       };
 
