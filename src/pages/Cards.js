@@ -8,7 +8,6 @@ export const Cards = ({cards,setCards}) => {
         setActiveCard(index);
     };
     const handleCardRemove = (index) => {
-        console.log(index)
         const updatedCards = cards.filter((_, i) => i !== index);
         setCards(updatedCards);
     };
@@ -120,11 +119,9 @@ export const Cards = ({cards,setCards}) => {
       )
     ))}
   </div>
-  <p id="addCardLink">
     <Link to="/addcards" id="addCardText" >
       ADD CARD
     </Link>
-  </p>
 </div>
   );      
 }

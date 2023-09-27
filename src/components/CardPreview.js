@@ -42,5 +42,4 @@ const CardPreview = ({ formData,cardHolder }) => {
     </div>
   );
 };
-
 export default CardPreview;

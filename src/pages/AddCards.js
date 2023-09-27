@@ -15,7 +15,6 @@ export const AddCards = ({cards,setCards,randomUserFullName}) => {
 
   const handleSubmit = () => {
     if(cards.length >=4){
-        console.log("max 4")
         alert("You have reached the maximum number of cards (4). Remove a card to add another one.")
         return;
     }
@@ -35,7 +34,6 @@ export const AddCards = ({cards,setCards,randomUserFullName}) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
-
 
   return (
     <div>
