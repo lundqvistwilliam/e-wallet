@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 export const Cards = ({cards,setCards}) => {
     const [activeCard,setActiveCard] =useState(-1)
+
     const handleCardClick = (index) => {
         setActiveCard(index);
     };
@@ -11,6 +12,11 @@ export const Cards = ({cards,setCards}) => {
         const updatedCards = cards.filter((_, i) => i !== index);
         setCards(updatedCards);
     };
+
+    const formatBankNumber = (bankNumber) => {
+        return bankNumber.replace(/[-\s]/g, '').replace(/(.{4})/g, '$1 ');
+    };
+
 
     return (
     <div className="cardDiv">
@@ -52,7 +58,7 @@ export const Cards = ({cards,setCards}) => {
                     src="https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/chip.png"
                     alt=""
                   />
-                  <p>{cards[activeCard].bankNumber}</p>
+                  <p>{formatBankNumber(cards[activeCard].bankNumber)}</p>
                 </div>
                 <div className="card_info ">
                   <p>{cards[activeCard].cardHolder}</p>
@@ -93,7 +99,7 @@ export const Cards = ({cards,setCards}) => {
                 src="https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/chip.png"
                 alt=""
               />
-              <p>{card.bankNumber}</p>
+              <p>{formatBankNumber(card.bankNumber)}</p>
             </div>
             <div className="card_info ">
               <p>{card.cardHolder}</p>
@@ -114,8 +120,8 @@ export const Cards = ({cards,setCards}) => {
       )
     ))}
   </div>
-  <p>
-    <Link to="/addcards" id="addCardLink">
+  <p id="addCardLink">
+    <Link to="/addcards" id="addCardText" >
       ADD CARD
     </Link>
   </p>

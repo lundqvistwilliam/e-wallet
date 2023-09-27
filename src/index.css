@@ -50,6 +50,7 @@ li:hover{
   color:blue;
 }
 
+
 h2,p {
   text-align: center;
   text-decoration: none;
@@ -118,14 +119,6 @@ input[type=text],input[type=number], select {
   border: 2px solid black;
 } 
 
-
-
-
-
-.active {
-  border:2px solid gold;
-}
-
 .visa {
   background-image: linear-gradient(100deg,
   rgba(26, 31, 113) 50%,
@@ -163,7 +156,6 @@ input[type=text],input[type=number], select {
   position: relative;
 }
 
-
 .vendor_text {
   float: right;
   padding: 10px;
@@ -180,7 +172,7 @@ input[type=text],input[type=number], select {
 }
 
 .card_bankNumber p {
-  font-size: 22px;
+  /* font-size: 22px; */
   padding: 10px 0;
   letter-spacing: 2px;
   color: white;
@@ -210,25 +202,36 @@ input[type=text],input[type=number], select {
   opacity: 100%;
 }
 
-#addCardLink {
+#addCardLink  {
   text-decoration: none;
   border: 1px solid black;
-  width: 30%;
-  color:gray;
+  width: 10%;
   border-radius: 6px;
   padding: 10px;
 }
 
+#addCardText {
+  text-decoration: none;
+  color:gray;
+}
+
 #addCardLink:hover{
   cursor: pointer;
-  border: 2px solid rgba(62, 161, 219, 1);
-  color: black;
+  border: 1px solid rgba(62, 161, 219, 1);
+  color: rgba(62, 161, 219, 1);
 }
 
 #submitBtn {
   margin-bottom: 20px;
   width: 10%;
   padding: 4px;
+}
+
+#randomizeInputBtn {
+  width: 10%;
+  background-color:thistle;
+  border-radius: 4px;
+  margin-left: 10px;
 }
 
 @media screen and (max-width:600px) {
@@ -266,4 +269,59 @@ input[type=text],input[type=number], select {
     font-size: 15px;
     margin-left: 15px; 
   }
+}
+
+@media screen and (min-width:1500px) {
+
+  h2 {
+    font-size: xxx-large;
+  }
+
+  .navbar {
+    font-size: xx-large;
+  }
+
+  #addCardLink {
+    width: 10%;
+    height: 20%;
+    color:black;
+  }
+  #addCardText {
+    font-size: larger;
+  }
+
+  select, input {
+    height: 70px;
+    font-size:x-large;
+  }
+
+  #submitBtn {
+    width: 10%;
+    height: 40px;
+    font-size: x-large;
+  }
+
+  #randomizeInputBtn {
+    width: 10%;
+    height: 40px;
+    font-size: x-large;
+    background-color:thistle;
+    border-radius: 4px;
+    margin-left: 10px;
+  }
+
+ .card  {
+  width: 760px;
+  height: 490px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  z-index: 1;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  position: relative;
+  margin-bottom: 60px;
+  box-sizing: border-box;
+  font-size:45px;
+ }
+
 }

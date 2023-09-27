@@ -2,7 +2,6 @@ import { useState,useEffect } from 'react';
 import {Link,useNavigate} from 'react-router-dom'
 
  const CardForm = ({ onSubmit, formData, setFormData,randomUserFullName }) => {
-    const [randomUserName, setRandomUserName] = useState("");
     const navigate = useNavigate();
     const [isFormValid, setIsFormValid] = useState(true);
 
@@ -49,9 +48,9 @@ import {Link,useNavigate} from 'react-router-dom'
         ccv: generateRandomNumber(100, 999).toString(),
         vendor: ['Visa', 'Swedbank', 'MasterCard', 'American Express'][generateRandomNumber(0, 3)],
       });
-
     }
-  
+
+    const { vendor, bankNumber, cardHolder, expirationMonth, expirationYear, ccv } = formData;
   
    return (
      <div>
@@ -61,7 +60,7 @@ import {Link,useNavigate} from 'react-router-dom'
             <label htmlFor="vendor">Vendor:</label><br/>
             <select id="vendor" 
             name="vendor"
-            value={formData.vendor}
+            value={vendor}
             onChange={handleChange}
             required
             >
@@ -79,7 +78,7 @@ import {Link,useNavigate} from 'react-router-dom'
               id="bankNumber"
               name="bankNumber"
               title="Input has to be 16 characters long"
-              value={formData.bankNumber}
+              value={bankNumber}
               onChange={handleChange}
               placeholder="XXXX-XXXX-XXXX-XXXX"
               onInput={(e) => e.target.value = e.target.value.slice(0, 16)}
@@ -92,9 +91,9 @@ import {Link,useNavigate} from 'react-router-dom'
               type="text"
               id="cardHolder"
               name="cardHolder"
-              value={formData.cardHolder}
+              value={cardHolder}
               onChange={handleChange}
-              disabled={formData.cardHolder !== ""}
+              disabled={cardHolder !== ""}
               required
             />
           </div>
@@ -103,7 +102,7 @@ import {Link,useNavigate} from 'react-router-dom'
               <select 
               id="expirationMonth" 
               name="expirationMonth"
-              value={formData.expirationMonth}
+              value={expirationMonth}
               onChange={handleChange}
               required
               >
@@ -124,7 +123,7 @@ import {Link,useNavigate} from 'react-router-dom'
             <select 
             id="expirationYear" 
             name="expirationYear"
-            value={formData.expirationYear}
+            value={expirationYear}
             onChange={handleChange}
             required
             >
@@ -145,7 +144,7 @@ import {Link,useNavigate} from 'react-router-dom'
               type="number"
               id="ccv"
               name="ccv"
-              value={formData.ccv}
+              value={ccv}
               onChange={handleChange}
               required
               onInput={(e) => e.target.value = e.target.value.slice(0, 3)}
@@ -153,8 +152,8 @@ import {Link,useNavigate} from 'react-router-dom'
           </div>
           <button type="submit" id="submitBtn"><strong>Submit</strong>
        </button>
+       <button onClick={handleRandomInputs} id="randomizeInputBtn">Randomized</button> 
        <Link to="/cards"></Link></form>
-       <button onClick={handleRandomInputs}>Randomized inputs</button> 
      </div>
    );
  };
