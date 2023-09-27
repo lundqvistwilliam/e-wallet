@@ -15,7 +15,6 @@ import {Link,useNavigate} from 'react-router-dom'
 
    const handleChange = (e) => {
      const { name, value } = e.target;
-    //  console.log(`Updating ${name} to ${value}`);
      setFormData({ ...formData, [name]: value });
  }
 
@@ -29,12 +28,31 @@ import {Link,useNavigate} from 'react-router-dom'
      setFormData({ ...formData, cardHolder: randomUserFullName });
      onSubmit(formData);
      navigate("/cards");
-    //  console.log('Form submitted:', formData);
    }
+
+   const handleRandomInputs=()=>{
+    const generateRandomNumber = (min, max) => {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      };
+
+    const randomBankNumber = Array.from({ length: 16 }, () =>
+    Math.floor(Math.random() * 10)).join('');
+
+    const randomExpirationMonth = String(Math.floor(Math.random() * 12) + 1).padStart(2, '0');
+    const randomExpirationYear = String(Math.floor(Math.random() * 10) + 2023);
+
+    setFormData({
+        ...formData,
+        bankNumber: randomBankNumber,
+        expirationMonth: randomExpirationMonth,
+        expirationYear: randomExpirationYear,
+        ccv: generateRandomNumber(100, 999).toString(),
+        vendor: ['Visa', 'Swedbank', 'MasterCard', 'American Express'][generateRandomNumber(0, 3)],
+      });
+
+    }
   
   
-
-
    return (
      <div>
        <h2>Add a Card</h2>
@@ -133,10 +151,10 @@ import {Link,useNavigate} from 'react-router-dom'
               onInput={(e) => e.target.value = e.target.value.slice(0, 3)}
             />
           </div>
-          <button type="submit"><strong>Submit</strong>
+          <button type="submit" id="submitBtn"><strong>Submit</strong>
        </button>
        <Link to="/cards"></Link></form>
-       {/* <button onClick={fetchRandomUser}>Random User</button> */}
+       <button onClick={handleRandomInputs}>Randomized inputs</button> 
      </div>
    );
  };
