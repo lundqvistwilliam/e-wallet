@@ -7,9 +7,9 @@ export const Root = () =>{
         <div className="navbar">
             <h1>Ankademin E-wallet</h1>
             <ul>
-            <li key="navItem1">
+            {/* <li key="navItem1">
                 <Link to="/">Home</Link>
-            </li>
+            </li> */}
             <li key="navItem2">
                 <Link to="/cards">Cards</Link>
             </li>

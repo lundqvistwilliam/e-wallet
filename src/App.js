@@ -16,7 +16,6 @@ function App() {
   const [cards, setCards] = useState([]);
   const [randomUserFullName, setRandomUserFullName] = useState("");
 
-  
   useEffect(() => {
     if (!randomUserFullName) {
       const fetchRandomUser = async () => {
@@ -63,8 +62,8 @@ function App() {
     createRoutesFromElements(
       <Route path="/" element={<Root />}>
         <Route index element={<Home />} />
-        <Route path="/cards" element={<Cards cards={cards} />} />
-        <Route path="/addcards" element={<AddCards setCards={setCards} randomUserFullName={randomUserFullName} />} />
+        <Route path="/cards" element={<Cards cards={cards} setCards={setCards}  />} />
+        <Route path="/addcards" element={<AddCards setCards={setCards} randomUserFullName={randomUserFullName} cards={cards} />} />
       </Route>
     )
   );

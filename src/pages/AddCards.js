@@ -3,6 +3,7 @@ import  CardForm  from "../components/CardForm";
 import  CardPreview  from "../components/CardPreview";
 
 export const AddCards = ({cards,setCards,randomUserFullName}) => {
+
   const [formData, setFormData] = useState({
     bankNumber: "",
     cardHolder: randomUserFullName,
@@ -13,6 +14,11 @@ export const AddCards = ({cards,setCards,randomUserFullName}) => {
   });
 
   const handleSubmit = () => {
+    if(cards.length >=4){
+        console.log("max 4")
+        alert("You have reached the maximum number of cards (4). Remove a card to add another one.")
+        return;
+    }
     const newCard = { ...formData };
     setCards((prevCards) => [...prevCards, newCard]);
     setFormData({
@@ -30,8 +36,6 @@ export const AddCards = ({cards,setCards,randomUserFullName}) => {
     setFormData({ ...formData, [name]: value });
   };
 
-//   console.log('formData state:', formData);
-//     console.log('randomUserFullName prop:', randomUserFullName);
 
   return (
     <div>
